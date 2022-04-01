@@ -34,7 +34,7 @@ fn static_fn_trait() {
 #[tokio::test]
 async fn async_nested() {
     bind_it! {
-        let fut: impl Future<Output = impl Future<Output = (impl Into<usize>, impl std::fmt::Display)> +> + 'static = async {
+        let fut: impl Future<Output = impl Future<Output = (impl Into<usize>, impl std::fmt::Display)> + 'static> + 'static = async {
             ready((5u8, true))
         };
     };
@@ -49,8 +49,9 @@ async fn async_nested() {
 }
 
 #[test]
-fn as_generic() {
+fn inside_other_types() {
     bind_it! {
-        let _: Option<impl std::string::ToString> = Some(false);
+        let _: Option<&impl std::string::ToString> = Some(&false);
+        //let _: (impl std::string::ToString,) = (false,);
     }
 }

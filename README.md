@@ -29,7 +29,7 @@ println!("{x}")
 
 
 # Limitations
-Yes, unfortunately:
+* Currently only one item per macro supported
 * Associated consts are not yet supported
 * Only one type per impl Trait allowed. [tl;dr](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types),
 you can't write
