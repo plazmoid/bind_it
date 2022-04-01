@@ -50,8 +50,7 @@ async fn async_nested() {
 
 #[test]
 fn inside_other_types() {
-    bind_it! {
-        let _: Option<&impl std::string::ToString> = Some(&false);
-        //let _: (impl std::string::ToString,) = (false,);
-    }
+    bind_it!( let _: Option<&impl std::string::ToString> = Some(&false); );
+    bind_it!( let _: (impl std::string::ToString, _) = (false, true); );
+    bind_it!( let _: *mut impl Into<()> = &mut () as *mut _; );
 }

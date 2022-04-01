@@ -91,13 +91,15 @@ fn extract_and_replace_ty(ty: &mut Type) -> Vec<TokenStream2> {
             extracted.push(tait);
         }
         Type::Array(a) => extracted.extend(extract_and_replace_ty(&mut *a.elem)),
+        Type::Infer(_) => (),
+        Type::Path(p) => traverse_path(&mut p.path),
+        Type::Ptr(p) => extracted.extend(extract_and_replace_ty(&mut *p.elem)),
+        Type::Reference(r) => extracted.extend(extract_and_replace_ty(&mut *r.elem)),
         Type::Tuple(t) => {
             for tpl_el in t.elems.iter_mut() {
                 extracted.extend(extract_and_replace_ty(tpl_el));
             }
         }
-        Type::Path(p) => traverse_path(&mut p.path),
-        Type::Reference(r) => extracted.extend(extract_and_replace_ty(&mut *r.elem)),
         t => todo!("{t:?}"),
     }
     extracted
