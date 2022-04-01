@@ -4,7 +4,7 @@ Currently supported statements: `let`, `const` (with some limitations mentioned 
 This crate will be replaced by [impl_trait_in_bindings](https://github.com/rust-lang/rust/issues/63065) feature in future,
 but there is still a long way to stabilize it.
 
-## Example
+# Example
 ```rust,nightly
 #![feature(type_alias_impl_trait)]
 
@@ -21,7 +21,7 @@ assert!(x);
 println!("{x}")
 ```
 
-## How it works?
+# How it works?
 [Ez!](https://rust-lang.github.io/impl-trait-initiative/explainer/lbit.html)
 
 # Minimal compiler version

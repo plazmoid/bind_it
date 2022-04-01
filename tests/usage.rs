@@ -8,7 +8,7 @@ extern crate bind_it;
 
 #[test]
 fn let_simple() {
-    bind_it!( let rng: impl Iterator<Item = u32> = 5..9; );
+    bind_it! { let rng: impl Iterator<Item = u32> = 5..9; }
     for n in rng {
         println!("{n}")
     }
@@ -37,7 +37,7 @@ async fn async_nested() {
         let fut: impl Future<Output = impl Future<Output = (impl Into<usize>, impl std::fmt::Display)> + 'static> + 'static = async {
             ready((5u8, true))
         };
-    };
+    }
     let (into_usize, displayable) = fut.await.await;
 
     // we cannot check equality of concrete and opaque types, so these asserts fail
@@ -50,7 +50,7 @@ async fn async_nested() {
 
 #[test]
 fn inside_other_types() {
-    bind_it!( let _: Option<&impl std::string::ToString> = Some(&false); );
-    bind_it!( let _: (impl std::string::ToString, _) = (false, true); );
-    bind_it!( let _: *mut impl Into<()> = &mut () as *mut _; );
+    bind_it! { let _: Option<&impl std::string::ToString> = Some(&false); }
+    bind_it! { let _: (impl std::string::ToString, _) = (false, true); }
+    bind_it! { let _: *mut impl Into<()> = &mut () as *mut _; }
 }
