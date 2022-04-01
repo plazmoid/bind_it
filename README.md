@@ -1,8 +1,8 @@
 # Description
-A macro that allows using impl trait types in bindings.
+A macro that allows using impl traits in bindings.
 Currently supported statements: `let`, `const` (with some limitations mentioned below), `static`.
 This crate will be replaced by [impl_trait_in_bindings](https://github.com/rust-lang/rust/issues/63065) feature in future,
-but there is still a long way to stabilize it.
+but there is still a long way to [reimplement](https://github.com/rust-lang/rust/issues/86729) and stabilize it.
 
 # Example
 ```rust,nightly
