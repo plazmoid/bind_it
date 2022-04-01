@@ -1,7 +1,9 @@
 #![feature(type_alias_impl_trait)]
 
+use std::cmp::PartialEq;
 use std::future::{ready, Future};
 use std::iter::{DoubleEndedIterator, IntoIterator};
+use std::ops::Add;
 
 #[macro_use]
 extern crate bind_it;
@@ -12,6 +14,13 @@ fn let_simple() {
     for n in rng {
         println!("{n}")
     }
+}
+
+#[test]
+fn let_comb() {
+    bind_it! { let num: impl std::fmt::Display + Add<usize, Output = usize> + PartialEq<usize> = 65536; }
+    assert_eq!(&num.to_string(), "65536");
+    assert_eq!(num + 2, 65538);
 }
 
 #[test]

@@ -1,4 +1,5 @@
 #![doc = include_str!("../README.md")]
+#![feature(type_alias_impl_trait)]
 
 use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;

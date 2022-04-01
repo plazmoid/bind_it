@@ -12,11 +12,11 @@ but there is still a long way to stabilize it.
 extern crate bind_it;
 
 fn main() {
-    bind_it!( let x: std::fmt::Display = true; );
+    bind_it!( let x: impl std::fmt::Display = true; );
 
     // fails, even x variable is initialized with a boolean, its type is hidden behind `Display` trait,
     // and the only thing that we can do - display x
-    assert!(x);
+    // assert!(x);
 
     // works
     println!("{x}")
@@ -35,7 +35,7 @@ fn main() {
 * Associated consts are not yet supported
 * Only one type per impl Trait allowed. [tl;dr](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types),
 you can't write
-```rust,nightly
+```rust,nightly,no_run
 bind_it! {
     let _: impl std::fmt::Display = if rand::random() > 0.5 {
             "qwe"
