@@ -19,4 +19,4 @@ uuid = { version = "0.8.2", features = ["v4"] }
 
 
 [dev-dependencies]
-tokio = { version = "*", features = ["rt", "macros"] }
+tokio = { version = "1.17", features = ["rt", "macros"] }
