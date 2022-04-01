@@ -16,9 +16,9 @@ fn let_simple() {
 
 #[test]
 fn let_path() {
-    bind_it!( let msg: impl std::string::ToString = 5; );
-
-    assert_eq!(msg.to_string(), String::from("5"));
+    bind_it!( let num: impl std::string::ToString = 5; );
+    // assert_eq!(num + 5, 10); // can't add an int to impl ToString
+    assert_eq!(num.to_string(), String::from("5"));
 }
 
 bind_it! {
