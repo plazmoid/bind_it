@@ -7,7 +7,11 @@ but there is still a long way to stabilize it.
 ## Example
 ```rust,nightly
 #![feature(type_alias_impl_trait)]
-let x: std::fmt::Display = true;
+
+#[macro_use]
+extern crate bind_it;
+
+bind_it!( let x: std::fmt::Display = true; );
 
 // fails, even x variable is initialized with a boolean, its type is hidden behind `Display` trait,
 // and the only thing that we can do - display x
@@ -27,7 +31,7 @@ println!("{x}")
 # Limitations
 Yes, unfortunately:
 * Associated consts are not yet supported
-* Only one type per impl Trait allowed. [tl;dr](https://github.com/rust-lang/rfcs/blob/master/text/2071-impl-trait-existential-types.md#guide-existential-types),
+* Only one type per impl Trait allowed. [tl;dr](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types),
 you can't write
 ```rust,nightly
 bind_it! {

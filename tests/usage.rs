@@ -47,3 +47,10 @@ async fn async_nested() {
     assert_eq!(into_usize.into(), 5usize);
     assert_eq!(displayable.to_string(), "true");
 }
+
+#[test]
+fn as_generic() {
+    bind_it! {
+        let _: Option<impl std::string::ToString> = Some(false);
+    }
+}
