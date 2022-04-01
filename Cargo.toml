@@ -1,6 +1,6 @@
 [package]
 name = "bind_it"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 description = "A macro that allows impl traits in let/static/const bindings until they actually stabilized"
 license = "MIT"
